@@ -14,7 +14,7 @@ void VectorGraphic::AddGraphicElement(){
 	char inputBuffer[1024];
 	bool isValidName = false, isValidNumLines = false, isValidCoords = false;
 	int numLines, xCoord, yCoord, i;
-	unsigned int j;
+	unsigned int j, jj;
 
 	cout << "Adding A Graphic Element" << endl;
 
@@ -61,18 +61,32 @@ void VectorGraphic::AddGraphicElement(){
 	vectorBuffer.pElements = new GraphicElement[vectorBuffer.numGraphicElements];
 
 	for (j = 0; j < vectorBuffer.numGraphicElements; j++) { /* copy pImage to buffer so we can reinit pImage */
-		memcpy(&vectorBuffer.pElements[j], &this->pElements[j], sizeof(GraphicElement));
-		/*vectorBuffer.pElements[j] = this->pElements[j];*/
-	}
+		vectorBuffer.pElements[j] = this->pElements[j];
+		vectorBuffer.pElements[j].pLines = new Line[this->pElements[j].numLines];
 
+		for (jj = 0; jj < this->pElements[j].numLines; jj++) { /* copy pImage to buffer so we can reinit pImage */
+			vectorBuffer.pElements[j].pLines[jj] = this->pElements[j].pLines[jj];
+		}
+	}
+	
 	this->numGraphicElements += 1; /* increase the number of graphic elements*/
 
 	this->pElements = new GraphicElement[this->numGraphicElements];
 	for (j = 0; j < vectorBuffer.numGraphicElements; j++) { /* copy pImage to buffer so we can reinit pImage */
-		memcpy(&vectorBuffer.pElements[j], &this->pElements[j], sizeof(GraphicElement));
-		/*this->pElements[j] = vectorBuffer.pElements[j];*/
+		this->pElements[j] = vectorBuffer.pElements[j];
+		this->pElements[j].pLines = new Line[vectorBuffer.pElements[j].numLines];
+
+		for (jj = 0; jj < this->pElements[j].numLines; jj++) { /* copy pImage to buffer so we can reinit pImage */
+			this->pElements[j].pLines[jj] = vectorBuffer.pElements[j].pLines[jj];
+		}
 	}
+
 	this->pElements[j] = newGraphicElement;
+	this->pElements[j].pLines = new Line[newGraphicElement.numLines];
+
+	for (jj = 0; jj < newGraphicElement.numLines; jj++) { /* copy pImage to buffer so we can reinit pImage */
+		this->pElements[j].pLines[jj] = newGraphicElement.pLines[jj];
+	}
 
 }
 
@@ -82,8 +96,7 @@ void VectorGraphic::DeleteGraphicElement(){
 
 void VectorGraphic::ReportVectorGraphic(){
 	unsigned int i, j;
-	cout << "VectorGraphic Report" << endl;
-
+	cout << "\nVectorGraphic Report" << endl;
 	if (this->numGraphicElements < 1){ /* are the GraphicElements in the array?*/
 		cout << "No Graphic Elements to report.";
 		return;
