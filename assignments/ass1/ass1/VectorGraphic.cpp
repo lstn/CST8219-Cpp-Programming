@@ -7,8 +7,8 @@ Course Name/Number:	C++ Programming CST8219
 Lab Sect: 			302
 Assignment #:		1
 Assignment name:	Vector Graphics in C++
-Due Date:			September 25 2016
-Submission Date:	September 25 2016
+Due Date:			October 15 2016
+Submission Date:	October 15 2016
 Professor:			Andrew Tyler
 Purpose:			This file implements the member functions of the VectorGraphic class. These allow the user to add, remove, 
 					and display GraphicElements in the VectorGraphic.
