@@ -10,6 +10,19 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ass2.cpp" />
+    <ClCompile Include="GraphicElement.cpp" />
+    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="VectorGraphic.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GraphicElement.h" />
+    <ClInclude Include="Line.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="VectorGraphic.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{89738D08-ECC0-4FE0-BBBC-DC8C4431F9B7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -77,16 +90,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\ass1\ass1\GraphicElement.h" />
-    <ClInclude Include="..\..\ass1\ass1\Line.h" />
-    <ClInclude Include="..\..\ass1\ass1\Point.h" />
-    <ClInclude Include="..\..\ass1\ass1\VectorGraphic.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\ass1\ass1\ass2.cpp" />
-    <ClCompile Include="..\..\ass1\ass1\VectorGraphic.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
